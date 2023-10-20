@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 Django = "^4.2.6"
 djangorestframework = "^3.14.0"
+django-rest-framework = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.10.0"

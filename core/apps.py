@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 
 
-class QuizConfig(AppConfig):
+class CoreConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "quiz"
+    name = "core"
+    verbose_name = "A Much Better Name"
