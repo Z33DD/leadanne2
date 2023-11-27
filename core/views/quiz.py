@@ -3,7 +3,6 @@ import json
 
 from core.models import Contact, QuestionOption, Quiz, Question
 from django.forms.models import model_to_dict
-from django.template import RequestContext
 
 
 def post(request: HttpRequest) -> JsonResponse:

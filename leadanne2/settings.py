@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-uxchs0ky^fe3s4(6fj@t(jyk#ux*j-c)8j(tl47@4ps((ucun=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -133,3 +133,32 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 OPENAI_KEY = os.environ.get("OPENAI_KEY")
+EXAMPLE_RESULT = """Here are 10 ideas to solve your problem 🔥
+1. Create a comprehensive guide on finding the perfect business niche for hotels and hosting businesses
+Create a comprehensive guide that outlines step-by-step strategies and provides practical advice for hotels and hosting businesses to identify and capitalize on their unique business niche. Include examples, case studies, and actionable tips to ensure easy implementation.
+2. Offer a free consultation session to hotels and hosting businesses to analyze their current niche and suggest potential improvements
+Provide hotels and hosting businesses with a free consultation session where you will analyze their current niche positioning and offer personalized recommendations to improve profitability. During the session, you can discuss target audience demographics, competitive analysis, differentiation strategies, and marketing tactics.
+3. Host a webinar series on niche marketing strategies for hotels and hosting businesses
+Host a series of webinars focused on niche marketing strategies for hotels and hosting businesses. Invite industry experts to share their insights and best practices. Cover topics such as market research, branding, customer segmentation, and promotional tactics. Offer attendees the opportunity to ask questions and provide actionable takeaways.
+4. Collaborate with industry influencers who specialize in niche marketing for hotels and hosting businesses to create informative content and promote it
+Collaborate with renowned influencers in the hospitality industry who specialize in niche marketing. Develop informative content such as blog posts, videos, or podcasts that highlight the importance of niche marketing for hotels and hosting businesses. Leverage the influencers' networks to promote the content and maximize reach.
+5. Develop a case study series showcasing successful niche marketing strategies implemented by hotels and hosting businesses
+Create a series of case studies showcasing hotels and hosting businesses that have successfully implemented niche marketing strategies. Highlight their challenges, approaches, and outcomes. This will serve as inspiration for other businesses in the industry and provide real-life examples of how niche marketing can lead to increased profits.
+6. Provide personalized email newsletters with niche marketing tips and insights to hotels and hosting businesses
+Implement an email marketing campaign specifically targeting hotels and hosting businesses. Offer a free newsletter subscription that delivers niche marketing tips, industry trends, and success stories directly to their inbox. Personalize the newsletters based on the subscribers' specific niche or interests to maximize relevance and engagement.
+7. Leverage social media platforms to engage with the target audience by sharing success stories and valuable niche marketing advice
+Utilize social media platforms, such as Instagram and LinkedIn, to engage with the target audience. Share success stories of hotels and hosting businesses that have effectively implemented niche marketing strategies. Provide valuable niche marketing advice through informative posts, infographics, and videos. Encourage audience interaction by asking questions and responding to comments.
+8. Create a specialized online community or forum for hotel and hosting business owners to discuss and share insights on niche marketing
+Create an online community or forum exclusively for hotel and hosting business owners. This platform will serve as a space for them to share their experiences, exchange niche marketing insights, and seek advice from peers. Encourage active participation by regularly posting helpful content, organizing Q&A sessions, and fostering a supportive community environment.
+9. Offer exclusive discounts or promotional packages to hotels and hosting businesses that implement niche marketing strategies
+Offer exclusive discounts or promotional packages to hotels and hosting businesses that implement niche marketing strategies. This will incentivize them to take action and provide an added value for adopting niche marketing tactics. Promote these offers through email marketing, social media, and targeted online advertising.
+10. Partner with complementary businesses, such as travel agencies or event planners, to cross-promote each other's services and target niche customer segments
+Establish partnerships with complementary businesses within the hospitality industry, such as travel agencies or event planners. Create mutually beneficial cross-promotion strategies that help reach niche customer segments. For example, collaborate on joint promotional campaigns, offer bundled services, or provide referral incentives. This strategic alliance can expand the reach and customer base for both businesses."""
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "America/Bahia"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+POSTMARK_SERVER_TOKEN = "06fb08a6-b588-4159-a122-26f5d2532281"
+POSTMARK_SENDER_EMAIL = "contact@codetta.tech"

@@ -20,7 +20,3 @@ def askgpt(question, chat_log=None):
     answer = response.choices[0]["message"]["content"]
     chat_log.append({"role": "assistant", "content": answer})
     return answer, chat_log
-
-
-if "__main__" in __name__:
-    print(askgpt("How do I write a hello world in python?"))
