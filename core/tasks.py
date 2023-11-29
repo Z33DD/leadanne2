@@ -100,6 +100,7 @@ def generate_result(payload: dict) -> str:
     prompt += f"\n\nFor example, this is a suguestion for a legal consulting agency:\n {EXAMPLE_RESULT}\n"
 
     reply, _ = askgpt(prompt)
+    reply = reply.replace("\n", "<br />")
 
     postmark.emails.send_with_template(
         TemplateId=reference["email"]["template_id"],
