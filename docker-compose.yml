@@ -13,6 +13,7 @@ services:
       - 8000:8000
     env_file:
       - docker.env
+      - .env
     depends_on:
       - database
       - worker
@@ -24,6 +25,7 @@ services:
       dockerfile: ./Dockerfile.worker
     env_file:
       - docker.env
+      - .env
     depends_on:
       - database
       - redis

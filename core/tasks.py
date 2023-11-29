@@ -103,7 +103,7 @@ def generate_result(payload: dict) -> str:
 
     postmark.emails.send_with_template(
         TemplateId=reference["email"]["template_id"],
-        TemplateModel={},
+        TemplateModel={"content": reply},
         From=POSTMARK_SENDER_EMAIL,
         To=email,
     )
