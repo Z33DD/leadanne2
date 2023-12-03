@@ -651,6 +651,21 @@ yaml = ["PyYAML (>=3.10)"]
 zookeeper = ["kazoo (>=2.8.0)"]
 
 [[package]]
+name = "markdown"
+version = "3.5.1"
+description = "Python implementation of John Gruber's Markdown."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "Markdown-3.5.1-py3-none-any.whl", hash = "sha256:5874b47d4ee3f0b14d764324d2c94c03ea66bee56f2d929da9f2508d65e722dc"},
+    {file = "Markdown-3.5.1.tar.gz", hash = "sha256:b65d7beb248dc22f2e8a31fb706d93798093c308dc1aba295aedeb9d41a813bd"},
+]
+
+[package.extras]
+docs = ["mdx-gh-links (>=0.2)", "mkdocs (>=1.5)", "mkdocs-gen-files", "mkdocs-literate-nav", "mkdocs-nature (>=0.6)", "mkdocs-section-index", "mkdocstrings[python]"]
+testing = ["coverage", "pyyaml"]
+
+[[package]]
 name = "multidict"
 version = "6.0.4"
 description = "multidict implementation"
@@ -1124,4 +1139,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2b60db0cbd4f38bfa53047ebb689be326b477e84b4f7e80abb4344b7e3ecb571"
+content-hash = "d89dd1c7929ca16952041cda309e164ace59a53f7bcd4bc29afe6734b04146da"

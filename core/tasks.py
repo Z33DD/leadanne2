@@ -1,14 +1,17 @@
+import json
 from core import postmark
 from core.chatgpt import askgpt
-
-from leadanne2.settings import EXAMPLE_RESULT, POSTMARK_SENDER_EMAIL
+from functools import lru_cache
+from leadanne2.settings import POSTMARK_SENDER_EMAIL
 from leadanne2.celery import app
+from markdown import markdown
 
 
 REFERENCE = {
     "nGpZDL": {
         "email": {
             "template_id": 33844125,
+            "language": "English",
         },
         "company": {
             "name": "question_kdxbvo",
@@ -34,8 +37,45 @@ REFERENCE = {
             "last_name": "question_A75rye",
             "job_title": "question_LZyDkl",
         },
-    }
+    },
+    "wQ7k87": {
+        "email": {
+            "template_id": 34025381,
+            "language": "Portuguese",
+        },
+        "company": {
+            "name": "question_A7R5eB",
+            "age": "question_KY2yKM",
+            "industry": "question_LZxyLG",
+            "location": "question_pbq9pV",
+            "size": "question_Bzo5W7",
+        },
+        "main": {
+            "Ideal customer demographics": "question_1A05oM",
+            "Current marketing strategies (if any)": "question_MeZypY",
+            "Unique selling points": "question_gDPr6N",
+            "Short-term and long-term goals": "question_yPAk50",
+            "Annual sales targets": "question_XxAyPO",
+            "Specific marketing objectives": "question_81D54A",
+            "Marketing challenges": "question_0Q05RZ",
+            "Competitor challenges": "question_zxBv51",
+            "Budget constraints": "question_5B05PM",
+        },
+        "contact": {
+            "first_name": "question_6805Ee",
+            "email": "question_b5RGQe",
+            "last_name": "question_7R05rL",
+            "job_title": "question_vG6b5A",
+        },
+    },
 }
+
+
+@lru_cache(maxsize=None)
+def get_conversation_context():
+    with open("context.json", "r") as fp:
+        content = json.load(fp)
+    return content
 
 
 @app.task()
@@ -46,6 +86,7 @@ def generate_result(payload: dict) -> str:
     company_keys = [key for key in reference["company"].values()]
     main_keys = [key for key in reference["main"].values()]
     contact_keys = [key for key in reference["contact"].values()]
+    language = reference["email"]["language"]
     all_keys = company_keys + main_keys + contact_keys
 
     data = {}
@@ -78,7 +119,7 @@ def generate_result(payload: dict) -> str:
     size = data[reference["company"]["size"]]["value"]
 
     header = (
-        f"Create a personalized marketing guide in HTML for {company_name}, the "
+        f"Create a personalized marketing guide in {language} for {company_name}, the "
         f"company is in the market of {industry} for {age} years and has "
         f"arround {size} employees. They have shared their company details,"
         " target audience, goals, challenges, and unique selling points."
@@ -97,10 +138,12 @@ def generate_result(payload: dict) -> str:
         responses.append(section_text)
 
     prompt = "\n\n".join([header] + responses)
-    prompt += f"\n\nFor example, this is a suguestion for a legal consulting agency:\n {EXAMPLE_RESULT}\n"
 
-    reply, _ = askgpt(prompt)
-    reply = reply.replace("\n", "<br />")
+    reply = askgpt(
+        prompt,
+        chat_log=get_conversation_context(),
+    )
+    reply = markdown(reply)
 
     postmark.emails.send_with_template(
         TemplateId=reference["email"]["template_id"],
