@@ -22,9 +22,9 @@ from core.views import quiz, result
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("quiz/", quiz.post),
+    # path("quiz/", quiz.post),
     path("result/", result.post),
-    path("questions/", views.QuestionList.as_view()),
-    path("options/", views.QuestionOptionList.as_view()),
-    path("answer/", views.AnswerCraate.as_view()),
+    # path("questions/", views.QuestionList.as_view()),
+    # path("options/", views.QuestionOptionList.as_view()),
+    # path("answer/", views.AnswerCraate.as_view()),
 ]
