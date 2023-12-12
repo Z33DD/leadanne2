@@ -35,23 +35,23 @@ services:
     ports:
       - 6379:6379
 
-  database:
-    image: postgres:alpine
-    ports:
-      - 5432:5432
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "pg_isready",
-          "-q",
-          "-d",
-          "postgres",
-          "-U",
-          "root"
-        ]
-      timeout: 45s
-      interval: 10s
-      retries: 10
-    env_file:
-      - docker.env
+  # database:
+  #   image: postgres:alpine
+  #   ports:
+  #     - 5432:5432
+  #   healthcheck:
+  #     test:
+  #       [
+  #         "CMD",
+  #         "pg_isready",
+  #         "-q",
+  #         "-d",
+  #         "postgres",
+  #         "-U",
+  #         "root"
+  #       ]
+  #     timeout: 45s
+  #     interval: 10s
+  #     retries: 10
+  #   env_file:
+  #     - docker.env
