@@ -29,16 +29,6 @@ jobs:
         region: sa-east-1
         deployment_package: deploy.zip
 
-    - name: Deploy worker to EB
-      uses: einaregilsson/beanstalk-deploy@v21
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: Leadanne2-worker
-        environment_name: Leadanne2-worker-env
-        version_label: ${{ github.sha }}
-        region: sa-east-1
-        deployment_package: deploy.zip
 
   build-worker:
     runs-on: ubuntu-latest
@@ -52,17 +42,6 @@ jobs:
       
     - name: Generate deployment package
       run: zip -r deploy.zip . -x '*.git*'
-
-    - name: Deploy server to EB
-      uses: einaregilsson/beanstalk-deploy@v21
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: Leadanne2-worker
-        environment_name: Leadanne2-worker-env
-        version_label: ${{ github.sha }}
-        region: sa-east-1
-        deployment_package: deploy.zip
 
     - name: Deploy worker to EB
       uses: einaregilsson/beanstalk-deploy@v21
