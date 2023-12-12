@@ -25,3 +25,7 @@
 **/values.dev.yaml
 LICENSE
 README.md
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore
