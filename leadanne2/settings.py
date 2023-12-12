@@ -134,10 +134,27 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 OPENAI_KEY = os.environ.get("OPENAI_KEY")
 
+from kombu.utils.url import safequote
+
+AWS_ACCESS_KEY = safequote(os.getenv("AWS_ACCESS_KEY"))
+AWS_SECRET_KEY = safequote(os.getenv("AWS_SECRET_KEY"))
+
+CELERY_BROKER_URL = f"sqs://{AWS_ACCESS_KEY}:{AWS_SECRET_KEY}@"
 # Celery Configuration Options
 CELERY_TIMEZONE = "America/Bahia"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+# CELERY SETTINGS
+# It is not a good practice to embed AWS credentials here.
+# More information on this below.
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    "region": "sa-east-1",
+    "polling_interval": 60,
+    # Number of seconds to sleep between unsuccessful polls,
+    # default value is 30 seconds
+}
+# CELERY_DEFAULT_QUEUE = "awseb-e-tytm2h2isj-stack-AWSEBWorkerQueue-iq60iFpoobgm"
+# SQS_QUEUE_NAME = CELERY_DEFAULT_QUEUE
 
 POSTMARK_SERVER_TOKEN = "06fb08a6-b588-4159-a122-26f5d2532281"
 POSTMARK_SENDER_EMAIL = "pedro@z33dd.com"
