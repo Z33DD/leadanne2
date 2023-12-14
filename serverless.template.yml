@@ -1,0 +1,7 @@
+org: z33dd
+app: leadanne2
+region: ${opt:region, env:AWS_REGION, 'us-east-2'}
+description: Deploys a Python SQS Producer-Consumer service with traditional Serverless Framework
+keywords: aws, serverless, faas, lambda, python, sqs
+repo: https://github.com/Z33DD/leadanne2
+license: MIT

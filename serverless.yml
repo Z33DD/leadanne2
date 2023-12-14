@@ -1,0 +1,42 @@
+service: leadanne2
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: sa-east-1
+  profile: leadanne2
+  tags:
+    company: Codetta Tech
+  environment:
+    DEBUG: ${file(./config/${opt:stage, 'dev'}.json):DEBUG}
+    OPENAI_KEY: ${file(./config/${opt:stage, 'dev'}.json):OPENAI_KEY}
+    POSTMARK_SERVER_TOKEN: ${file(./config/${opt:stage, 'dev'}.json):POSTMARK_SERVER_TOKEN}
+
+constructs:
+  jobs:
+    type: queue
+    worker:
+      handler: handler.consumer
+
+functions:
+  producer:
+    handler: handler.producer
+    events:
+      - httpApi:
+          method: post
+          path: /produce
+    environment:
+      QUEUE_URL: ${construct:jobs.queueUrl}
+
+plugins:
+  - serverless-lift
+  - serverless-python-requirements
+
+package:
+  patterns:
+    - "!node_modules/**"
+custom:
+  pythonRequirements:
+    usePoetry: true
+    zip: true

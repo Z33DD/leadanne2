@@ -1,0 +1,381 @@
+{
+    "eventId": "d4cf6c66-5d87-4e98-9f6e-30afa5f2f7a3",
+    "eventType": "FORM_RESPONSE",
+    "createdAt": "2023-11-07T01:43:12.531Z",
+    "data": {
+        "responseId": "YODb6W",
+        "submissionId": "YODb6W",
+        "respondentId": "xJkX9k",
+        "formId": "nGpZDL",
+        "formName": "\ud83e\udd16 AI Marketing Consultor",
+        "createdAt": "2023-11-07T01:43:12.000Z",
+        "fields": [
+            {
+                "key": "question_kdxbvo",
+                "label": "Company name",
+                "type": "INPUT_TEXT",
+                "value": "ACME Inc."
+            },
+            {
+                "key": "question_Npyl4j",
+                "label": "Years in operation",
+                "type": "INPUT_NUMBER",
+                "value": 3
+            },
+            {
+                "key": "question_q4eDY9",
+                "label": "Industry",
+                "type": "DROPDOWN",
+                "value": [
+                    "f01b07f5-7f58-4b09-bd98-021299fad12f"
+                ],
+                "options": [
+                    {
+                        "id": "e429f58c-769d-4472-8efc-d984be97e02b",
+                        "text": "Retail"
+                    },
+                    {
+                        "id": "75df77ff-4798-4e40-934c-4dacebe081f0",
+                        "text": "Technology"
+                    },
+                    {
+                        "id": "a39b9a70-da4c-4c9d-8aba-f1ef8c1ceb79",
+                        "text": "Healthcare"
+                    },
+                    {
+                        "id": "f01b07f5-7f58-4b09-bd98-021299fad12f",
+                        "text": "Real Estate"
+                    },
+                    {
+                        "id": "7dbd69cd-7307-469e-9f21-32fb1fd98c46",
+                        "text": "Finance"
+                    },
+                    {
+                        "id": "f1611f4e-9179-411e-923d-ad9460b0529d",
+                        "text": "Food & Beverage"
+                    },
+                    {
+                        "id": "9cf6d529-07d8-4675-b38c-f49018c54490",
+                        "text": "E-commerce"
+                    },
+                    {
+                        "id": "5287b1ff-fa34-451f-88d6-b8575794d8b6",
+                        "text": "Manufacturing"
+                    },
+                    {
+                        "id": "850ad0ad-e7d6-45b1-8142-e02eb1644445",
+                        "text": "Education"
+                    },
+                    {
+                        "id": "06afdedd-856e-41d6-a905-154d3d9a7fb9",
+                        "text": "Travel & Tourism"
+                    },
+                    {
+                        "id": "16203b52-7566-458a-b1a8-52fa70fa8322",
+                        "text": "Legal Services"
+                    },
+                    {
+                        "id": "d7a6229c-5968-4a17-a71e-b2fa10101d74",
+                        "text": "Automotive"
+                    },
+                    {
+                        "id": "7f1ddd9d-75c5-42e6-8b56-728e2ff4243f",
+                        "text": "Entertainment"
+                    },
+                    {
+                        "id": "f17acd69-2446-4c70-a8bc-65dbe1daa733",
+                        "text": "Nonprofit"
+                    },
+                    {
+                        "id": "31b30ae6-2df3-43dd-85a8-f0767e0fc88e",
+                        "text": "Fitness & Wellness"
+                    },
+                    {
+                        "id": "b3b63773-bc6f-4e2a-8163-a6bae3d8b3a8",
+                        "text": "Beauty & Fashion"
+                    },
+                    {
+                        "id": "bded376d-7475-40e2-9798-e70bf2fe46a7",
+                        "text": "Home & Garden"
+                    },
+                    {
+                        "id": "5d66fb7c-4a0e-477c-83b7-f096803a0093",
+                        "text": "Marketing & Advertising"
+                    },
+                    {
+                        "id": "4ebe8682-ca76-4ff8-a711-93d9dd736c7e",
+                        "text": "Consulting"
+                    },
+                    {
+                        "id": "da80ae8b-3566-494f-9c35-955984192065",
+                        "text": "Hospitality"
+                    },
+                    {
+                        "id": "cb4fcda1-9a67-4db9-8e62-93d8a71e6a83",
+                        "text": "Agriculture"
+                    },
+                    {
+                        "id": "615031de-d8fe-45d2-89c3-fdb80801524c",
+                        "text": "Construction"
+                    },
+                    {
+                        "id": "a79e3e17-e94b-4b30-8d5b-30ee9eed8c52",
+                        "text": "Energy & Environment"
+                    },
+                    {
+                        "id": "362b4a6b-f471-4119-ac08-66765c31806d",
+                        "text": "Government & Public Sector"
+                    },
+                    {
+                        "id": "cc8858cd-67fc-4bb2-ba4d-63c87b724e0c",
+                        "text": "Transportation & Logistics"
+                    },
+                    {
+                        "id": "ec99bd5d-f769-4fb1-bd14-7e92d8085b8a",
+                        "text": "Media & Publishing"
+                    },
+                    {
+                        "id": "8d07d5ec-f092-481a-9481-88989b49ac98",
+                        "text": "Sports & Recreation"
+                    },
+                    {
+                        "id": "5af40110-014c-4e8d-9358-2b4b36681842",
+                        "text": "Consumer Electronics"
+                    },
+                    {
+                        "id": "ebfd2948-0656-4763-a5a6-ad8856469d0f",
+                        "text": "Telecommunications"
+                    },
+                    {
+                        "id": "bef5036e-4613-4fdf-8127-3131854467a4",
+                        "text": "Art & Culture"
+                    },
+                    {
+                        "id": "b6b3fb5a-16f3-4393-94b3-9f6872607d72",
+                        "text": "Pharmaceuticals"
+                    },
+                    {
+                        "id": "b98a8a8c-f969-48d5-b86c-ca91ddcf8d84",
+                        "text": "Event Planning"
+                    },
+                    {
+                        "id": "bbfadd9d-1e35-4bd6-af8d-0b62cc296c59",
+                        "text": "Other"
+                    }
+                ]
+            },
+            {
+                "key": "question_QKyexG",
+                "label": "Location",
+                "type": "INPUT_TEXT",
+                "value": "New York, USA"
+            },
+            {
+                "key": "question_vGbXKl",
+                "label": "Company size",
+                "type": "DROPDOWN",
+                "value": [
+                    "fc3d20f7-0f74-4f3f-ae09-b3fdc0807ddb"
+                ],
+                "options": [
+                    {
+                        "id": "a56cd6fb-7907-44e9-8e32-89904169b3aa",
+                        "text": "1-10"
+                    },
+                    {
+                        "id": "c4bdc0e6-76d4-48d0-a761-985a98d41916",
+                        "text": "10-100"
+                    },
+                    {
+                        "id": "fc3d20f7-0f74-4f3f-ae09-b3fdc0807ddb",
+                        "text": "100-1000"
+                    },
+                    {
+                        "id": "6d70716d-51d9-4873-9dd8-521782e41286",
+                        "text": "1000 +"
+                    }
+                ]
+            },
+            {
+                "key": "question_9q596V",
+                "label": "Ideal customer demographics",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_eqPQNk",
+                "label": "Current marketing strategies (if any)",
+                "type": "MULTIPLE_CHOICE",
+                "value": [
+                    "e9bb445a-ecff-40a4-a1df-da868fc8a4c5",
+                    "127aec3d-9271-4e48-948e-662d83b79cc3",
+                    "f33d5ace-38be-49e4-bea6-2cb234353b2d",
+                    "4260ca68-2890-4103-afb2-67d4e17e7089",
+                    "c5dcf989-c9d1-42f3-b8cd-888cdf96b723",
+                    "6178d263-a98f-4897-91d8-9135beab5a62",
+                    "bfdb26dd-667b-4697-92c3-40cc810780e1"
+                ],
+                "options": [
+                    {
+                        "id": "c1656981-6ecb-4200-ae9e-874df40f6078",
+                        "text": "Social Media Marketing"
+                    },
+                    {
+                        "id": "ec2e9642-f7da-45ea-9690-74fb1477ae5c",
+                        "text": "Content Marketing"
+                    },
+                    {
+                        "id": "302a6947-e99d-4a13-886c-9e391adbd46a",
+                        "text": "Email Marketing"
+                    },
+                    {
+                        "id": "6a19b623-3d89-4b51-9571-74fbe7408ef3",
+                        "text": "Search Engine Optimization (SEO)"
+                    },
+                    {
+                        "id": "e9bb445a-ecff-40a4-a1df-da868fc8a4c5",
+                        "text": "Pay-Per-Click (PPC) Advertising"
+                    },
+                    {
+                        "id": "2a7bdc0a-e028-439a-83b0-189b90445771",
+                        "text": "Influencer Marketing"
+                    },
+                    {
+                        "id": "5da88079-4cdd-4fab-be64-a858eeb44336",
+                        "text": "Affiliate Marketing"
+                    },
+                    {
+                        "id": "bfdb26dd-667b-4697-92c3-40cc810780e1",
+                        "text": "Online Advertising (Other than PPC)"
+                    },
+                    {
+                        "id": "608ede63-3d3a-4f4c-b2a5-64ee6ce61c75",
+                        "text": "Public Relations (PR)"
+                    },
+                    {
+                        "id": "4fae062e-95f9-483a-a73d-54b220cfc235",
+                        "text": "Event Marketing"
+                    },
+                    {
+                        "id": "f33d5ace-38be-49e4-bea6-2cb234353b2d",
+                        "text": "Print Advertising"
+                    },
+                    {
+                        "id": "7ae4b096-1d29-4394-acd3-d89de94dae96",
+                        "text": "Direct Mail Marketing"
+                    },
+                    {
+                        "id": "4260ca68-2890-4103-afb2-67d4e17e7089",
+                        "text": "Television Advertising"
+                    },
+                    {
+                        "id": "70a50b4e-c732-4682-8b6f-1a28c331134d",
+                        "text": "Radio Advertising"
+                    },
+                    {
+                        "id": "c5dcf989-c9d1-42f3-b8cd-888cdf96b723",
+                        "text": "Trade Shows & Exhibitions"
+                    },
+                    {
+                        "id": "127aec3d-9271-4e48-948e-662d83b79cc3",
+                        "text": "Referral Marketing"
+                    },
+                    {
+                        "id": "6178d263-a98f-4897-91d8-9135beab5a62",
+                        "text": "Other (Please specify)"
+                    }
+                ]
+            },
+            {
+                "key": "question_WOdEev",
+                "label": "Please specify",
+                "type": "INPUT_TEXT",
+                "value": "Lorem Ipsum"
+            },
+            {
+                "key": "question_aQo5jb",
+                "label": "Unique selling points",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_685jrJ",
+                "label": "Short-term and long-term goals",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_7R5L4R",
+                "label": "Annual sales targets",
+                "type": "INPUT_NUMBER",
+                "value": 5436
+            },
+            {
+                "key": "question_b5GjNZ",
+                "label": "Specific marketing objectives",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_A752Wz",
+                "label": "Marketing challenges",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_Bz5d8K",
+                "label": "Competitor challenges",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_kdxeOe",
+                "label": "Budget constraints",
+                "type": "TEXTAREA",
+                "value": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+                "key": "question_b5GZv1",
+                "label": "Your information",
+                "type": "INPUT_TEXT",
+                "value": "John"
+            },
+            {
+                "key": "question_Bz5E0R",
+                "label": "Email",
+                "type": "INPUT_EMAIL",
+                "value": "johndoe@example.com"
+            },
+            {
+                "key": "question_A75rye",
+                "label": "Last name",
+                "type": "INPUT_TEXT",
+                "value": "Doe"
+            },
+            {
+                "key": "question_LZyDkl",
+                "label": "Job title",
+                "type": "INPUT_TEXT",
+                "value": null
+            },
+            {
+                "key": "question_KYypkX",
+                "label": null,
+                "type": "CHECKBOXES",
+                "value": null,
+                "options": [
+                    {
+                        "id": "77b18768-4d33-4479-ac6e-d637ee0b5b1d",
+                        "text": "The latest news about our company in your inbox? Sign me up!"
+                    }
+                ]
+            },
+            {
+                "key": "question_KYypkX_77b18768-4d33-4479-ac6e-d637ee0b5b1d",
+                "label": "Checkbox (The latest news about our company in your inbox? Sign me up!)",
+                "type": "CHECKBOXES",
+                "value": null
+            }
+        ]
+    }
+}
