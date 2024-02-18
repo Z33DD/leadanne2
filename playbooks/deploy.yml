@@ -26,6 +26,11 @@
         src: ../.env
         dest: /opt/leadanne2/.env
 
+    - name: Copy docker-compose file
+      ansible.builtin.copy:
+        src: ../docker-compose.yml
+        dest: /opt/leadanne2/docker-compose.yml
+
     - name: Create and start services
       community.docker.docker_compose_v2:
         project_src: /opt/leadanne2/
