@@ -1,0 +1,14 @@
+# run with --ask-become-pass
+
+- name: Deploy application
+  hosts: servers
+  become: true
+  tasks:
+    - name: Ping my hosts
+      ansible.builtin.ping:
+
+    - name: Ensure git is installed.
+      package: name=git
+
+    - name: Ensure docker is installed.
+      package: name=docker-ce

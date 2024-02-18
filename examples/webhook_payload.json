@@ -1,0 +1,33 @@
+{
+    "eventId": "6f4d2307-db5e-48c7-8f03-a7a3ea9d925a",
+    "eventType": "FORM_RESPONSE",
+    "createdAt": "2024-02-04T18:29:13.195Z",
+    "data": {
+        "responseId": "EJXzpq",
+        "submissionId": "EJXzpq",
+        "respondentId": "pKZPMV",
+        "formId": "nGpZDL",
+        "formName": "🤖 AI Marketing Consultor",
+        "createdAt": "2024-02-04T18:29:12.000Z",
+        "fields": [
+            {
+                "key": "question_RWGZbp",
+                "label": "What does your company does?",
+                "type": "INPUT_TEXT",
+                "value": "I have a coffee shop in New York."
+            },
+            {
+                "key": "question_o9b05X",
+                "label": "What is your best email?",
+                "type": "INPUT_EMAIL",
+                "value": "test@example.com"
+            },
+            {
+                "key": "question_Gexoq2",
+                "label": "What is your biggest struggle?",
+                "type": "TEXTAREA",
+                "value": "I'm having an issue with making customers spend more on food, so my revenue grows."
+            }
+        ]
+    }
+}
