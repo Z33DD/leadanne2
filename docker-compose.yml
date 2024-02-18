@@ -56,19 +56,3 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
-      
-  db:
-    image: pgvector/pgvector:alpine
-    env_file: .env
-    environment:
-      - POSTGRES_USER=${DATABASE_USER}
-      - POSTGRES_PASSWORD=${DATABASE_PSWD}
-    ports:
-      - 5432:5432
-    volumes: 
-      - db:/var/lib/postgresql/data
-
-volumes:
-  db:
-    driver: local
-

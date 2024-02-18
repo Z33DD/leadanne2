@@ -7,10 +7,6 @@
     - name: Ping my hosts
       ansible.builtin.ping:
 
-    - name: Print message
-      ansible.builtin.debug:
-        msg: Hello world
-
     - name: Install required system packages
       apt:
         pkg:
@@ -20,6 +16,7 @@
           - software-properties-common
         state: latest
         update_cache: true
+
     - name: Add Docker GPG apt Key
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -35,11 +32,3 @@
         name: docker-ce
         state: latest
         update_cache: true
-
-    - name: Clone git repository
-      git:
-        repo: git@github.com:Z33DD/leadanne2.git
-        version: master
-        dest: /usr/share/leadanne2/
-        clone: yes
-        update: yes

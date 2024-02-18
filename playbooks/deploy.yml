@@ -11,4 +11,22 @@
       package: name=git
 
     - name: Ensure docker is installed.
-      package: name=docker-ce
+      package: name=docker
+
+    - name: Get stuff from git
+      git:
+        repo: https://github.com/Z33DD/leadanne2.git
+        version: main
+        clone: true
+        update: true
+        dest: /opt/leadanne2/
+
+    - name: Copy .env file
+      ansible.builtin.copy:
+        src: ../.env
+        dest: /opt/leadanne2/.env
+
+    - name: Create and start services
+      community.docker.docker_compose_v2:
+        project_src: /opt/leadanne2/
+      register: output
