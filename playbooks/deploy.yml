@@ -13,6 +13,11 @@
     - name: Ensure docker is installed.
       package: name=docker
 
+    - name: Delete old .env file
+      ansible.builtin.file:
+        state: absent
+        path: /opt/leadanne2/.env
+
     - name: Get stuff from git
       git:
         repo: https://github.com/Z33DD/leadanne2.git
