@@ -9,9 +9,6 @@ class ActionPoint(BaseModel):
 
 
 class EmailTemplate(BaseModel):
-    greeting: str = Field(
-        description="A greeting phrase to start the email. Use informal language and feel free to make jokes."
-    )
     introduction: str = Field(
         description="A short introduction to the email, saying what it is about."
     )
