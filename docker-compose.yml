@@ -65,3 +65,8 @@ services:
     container_name: tunnel
     depends_on:
       - server
+
+  vectorstore:
+    image: chromadb/chroma
+    ports:
+      - 8001:8000

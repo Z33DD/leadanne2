@@ -81,22 +81,3 @@ REFERENCE = {
         },
     },
 }
-
-if DEBUG:
-    from pprint import pprint
-
-    pprint(
-        {
-            "ENV": ENV,
-            "OPENAI_API_KEY": OPENAI_API_KEY,
-            "SENTRY_DSN": SENTRY_DSN,
-            "POSTMARK_SERVER_TOKEN": POSTMARK_SERVER_TOKEN,
-            "SENDER_EMAIL": SENDER_EMAIL,
-            "AWS_REGION": AWS_REGION,
-            "AWS_ACCESS_KEY": AWS_ACCESS_KEY,
-            "AWS_SECRET_KEY": AWS_SECRET_KEY,
-            "CELERY_BROKER_URL": CELERY_BROKER_URL,
-            "CELERY_RESULT_BACKEND": CELERY_RESULT_BACKEND,
-        }
-    )
-    print()

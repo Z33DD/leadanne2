@@ -35,7 +35,7 @@ def read_root():
         "name": app.title,
         "description": app.description,
         "environment": ENV,
-        "vesion": app.version,
+        "version": app.version,
     }
 
 

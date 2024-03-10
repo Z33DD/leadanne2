@@ -306,5 +306,5 @@ config/*
 # VS Code
 .vscode/
 
-input_data/*
+training_data/*
 playground.ipynb
