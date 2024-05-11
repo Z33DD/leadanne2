@@ -52,7 +52,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SENTRY_DSN = os.getenv("SENTRY_DSN")
 ENV = os.getenv("ENV")
 
-POSTMARK_SERVER_TOKEN = os.getenv("POSTMARK_SERVER_TOKEN")
+RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 AWS_REGION = os.getenv("AWS_REGION")
 AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY")
@@ -60,6 +60,8 @@ AWS_SECRET_KEY = os.getenv("AWS_SECRET_KEY")
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "http://localhost:54321")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
 REFERENCE = {
     "nGpZDL": {

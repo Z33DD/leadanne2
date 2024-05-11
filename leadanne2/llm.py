@@ -1,62 +1,62 @@
+from operator import itemgetter
+import os
 from typing import Optional
+from uuid import uuid4
+from fastapi.logger import logger
 from langchain_openai import ChatOpenAI
 from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import PydanticOutputParser
 from leadanne2.schema import EmailTemplate
 from leadanne2.config import OPENAI_API_KEY, DEBUG
-from langchain_core.vectorstores import VectorStore
-from langchain_community.vectorstores.chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from operator import itemgetter
-import chromadb
+from leadanne2 import supabase
+
 from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.exceptions import OutputParserException
+from leadanne2.utils import retry_on_exception
+from leadanne2.vector_store import vstore
 
 
 def get_model(debug: Optional[bool] = False) -> BaseChatModel:
-    if DEBUG or debug:
-        print("Using Ollama")
-        llm = Ollama(model="llama2")
+    if (DEBUG or debug) and not os.getenv("FORCE_OPENAI"):
+        logger.info("Using Ollama")
+        llm = Ollama(model="llama3")
     else:
-        print("Using OpenAI")
+        logger.info("Using OpenAI")
         llm = ChatOpenAI(api_key=OPENAI_API_KEY)
     return llm
 
 
-def get_vector_store() -> VectorStore:
-    client = chromadb.HttpClient(
-        host="localhost",
-        port=8001,
-    )
-    store = Chroma(embedding_function=OpenAIEmbeddings(), client=client)
-
-    return store
-
-
+@retry_on_exception(OutputParserException)
 def ask_llm(
     company_info: str,
     problem: str,
     language: Optional[str] = "English",
     debug: Optional[bool] = False,
-) -> EmailTemplate:
+) -> tuple[EmailTemplate, str]:
     llm = get_model(debug)
 
     parser = PydanticOutputParser(pydantic_object=EmailTemplate)
     prompt = PromptTemplate(
         template=(
-            "You are a world class marketer."
-            "Provide solutions to the user's problem.\n"
+            "You are a marketer."
+            "Your task is to write a answer to a "
+            "users problem given a context.\n"
             "Translate to {language}, if necessary.\n"
             "{format_instructions}\n"
-            "{company_info}\n"
+            "Here is the user problem:\n"
             "{problem}\n"
+            "Here is the context:\n"
+            "{company_info}\n"
+            "{context}\n"
         ),
         input_variables=["problem", "company_info", "language"],
-        partial_variables={"format_instructions": parser.get_format_instructions()},
+        partial_variables={
+            "format_instructions": parser.get_format_instructions(),
+        },
     )
 
-    vector_store = get_vector_store()
-    retriever = vector_store.as_retriever()
+    retriever = vstore.as_retriever()
     chain = (
         {
             "context": itemgetter("problem") | retriever,
@@ -68,13 +68,24 @@ def ask_llm(
         | llm
         | parser
     )
-
+    # Collect run ID using openai_wrapper
+    run_id = uuid4()
     reply = chain.invoke(
         {
             "problem": problem,
             "company_info": company_info,
             "language": language,
-        }
+        },
+        config={"metadata": {"run_id": run_id}},
     )
 
-    return reply
+    new_entry = {
+        "id": str(run_id),
+        "problem": problem,
+        "company_info": company_info,
+        "language": language,
+    }
+    supabase.table("LLM Runs").insert(new_entry).execute()
+    logger.debug(f"LLM run ID: {run_id}")
+
+    return reply, str(run_id)
