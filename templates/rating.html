@@ -17,11 +17,11 @@
             {% for rating in range(1, 6) %}
             <a href="/rate/{{ run_id }}?rating={{ rating }}">
                 {% if rating > rate %}
-                <img src="/static/star-outline.svg" alt="Star Icon, click to change the rate to {{ rating }}"
-                    class="h-6 w-6 text-yellow-400">
+                <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/24/outline/star.svg"
+                    alt="Star Icon, click to change the rate to {{ rating }}" class="h-6 w-6 text-yellow-400">
                 {% else %}
-                <img src="/static/star-filled.svg" alt="Star Icon, click to change the rate to {{ rating }}"
-                    class="h-6 w-6 text-yellow-400">
+                <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/24/solid/star.svg"
+                    alt="Star Icon, click to change the rate to {{ rating }}" class="h-6 w-6 text-yellow-400">
                 {% endif %}
             </a>
             {% endfor %}

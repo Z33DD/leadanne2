@@ -41,7 +41,6 @@ def render_html_body(data: dict, language: Language) -> str:
         loader=FileSystemLoader("templates/email"),
         autoescape=select_autoescape(),
     )
-    print(env.list_templates())
     if language == Language.PORTUGUESE:
         template = env.get_template("AI_Lead_Generation_PT.html")
     else:

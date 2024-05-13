@@ -1,5 +1,4 @@
 from fastapi import Request, FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from starlette.templating import _TemplateResponse
@@ -19,12 +18,6 @@ def app_factory() -> FastAPI:
         version=PROJECT["version"],
         description=PROJECT["description"],
     )
-    app.mount(
-        "/static",
-        StaticFiles(directory="static"),
-        name="static",
-    )
-
     if not DEBUG:
         sentry_sdk.init(
             SENTRY_DSN,
