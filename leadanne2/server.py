@@ -3,8 +3,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from starlette.templating import _TemplateResponse
 
-from leadanne2 import supabase
-from leadanne2.config import DEBUG, ENV, PROJECT, SENTRY_DSN
+from leadanne2 import supabase, logger
+from leadanne2.config import project, settings
 from leadanne2.tasks import generate_result
 
 import sentry_sdk
@@ -14,18 +14,18 @@ from sentry_sdk.integrations.celery import CeleryIntegration
 
 def app_factory() -> FastAPI:
     app = FastAPI(
-        title=PROJECT["name"],
-        version=PROJECT["version"],
-        description=PROJECT["description"],
+        title=project["name"],
+        version=project["version"],
+        description=project["description"],
     )
-    if not DEBUG:
+    if settings["sentry_dsn"]:
         sentry_sdk.init(
-            SENTRY_DSN,
+            settings["sentry_dsn"],
             integrations=[
                 CeleryIntegration(),
                 FastApiIntegration(),
             ],
-            environment=ENV,
+            environment=settings.env,
         )
 
     return app
@@ -39,7 +39,7 @@ def read_root():
     return {
         "name": app.title,
         "description": app.description,
-        "environment": ENV,
+        "environment": settings.env,
         "version": app.version,
         "docs": app.docs_url,
     }
@@ -47,6 +47,7 @@ def read_root():
 
 @app.post("/webhook")
 async def webhook(request: Request):
+    logger.info("Received webhook request")
     payload = await request.json()
     generate_result.delay(payload)
     return {"message": "Ok"}

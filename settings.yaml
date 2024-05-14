@@ -1,0 +1,24 @@
+development:
+  env: development
+  llm_model: "llama3"
+  log_level: "debug"
+
+production:
+  env: production
+  llm_model: "gpt-4o"
+  log_level: "info"
+
+global:
+  reference:
+    nGpZDL:
+      language: English
+      fields:
+        company_information: question_RWGZbp
+        email: question_o9b05X
+        problem: question_Gexoq2
+    wQ7k87:
+      language: Portuguese
+      fields:
+        company_information: question_jea0z9
+        email: question_2jEbob
+        problem: question_4a41Oo

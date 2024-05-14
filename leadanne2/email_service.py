@@ -1,13 +1,8 @@
 import resend
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from leadanne2.schema import EmailTemplate
-from leadanne2.config import RESEND_API_KEY
-from enum import Enum
-
-
-class Language(Enum):
-    PORTUGUESE = "Portuguese"
-    ENGLISH = "English"
+from leadanne2.config import settings, Language
+from leadanne2 import logger
 
 
 def send_email(
@@ -26,7 +21,8 @@ def send_email(
 
     html_body = render_html_body(payload, language)
 
-    resend.api_key = RESEND_API_KEY
+    logger.info(f"Sending email to {to}")
+    resend.api_key = settings["resend_api_key"]
     params: resend.Emails.SendParams = {
         "sender": "Codetta Tech <leadanne2@mail.z33dd.com>",
         "to": [to],
@@ -37,6 +33,7 @@ def send_email(
 
 
 def render_html_body(data: dict, language: Language) -> str:
+    logger.info(f"Rendering email template for {language}")
     env = Environment(
         loader=FileSystemLoader("templates/email"),
         autoescape=select_autoescape(),

@@ -1,7 +1,9 @@
+from typing import Optional
 import typer
 import uvicorn
 from leadanne2.vector_store import add_pdf_document, add_webpage_document
 from leadanne2.worker import celery
+from leadanne2.config import settings
 import urllib.parse
 import os
 
@@ -10,7 +12,9 @@ app = typer.Typer()
 
 
 @app.command(help="Run the server.")
-def serve(port: int = 8000, log_level: str = "debug"):
+def serve(port: int = 8000, log_level: Optional[str] = None):
+    if log_level is None:
+        log_level = settings["log_level"]
     server = uvicorn.Server(
         uvicorn.Config(
             app="leadanne2.server:app",

@@ -308,3 +308,5 @@ config/*
 
 training_data/*
 playground.ipynb
+# Ignore dynaconf secret files
+.secrets.*

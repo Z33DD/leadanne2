@@ -7,34 +7,22 @@
     - name: Ping my hosts
       ansible.builtin.ping:
 
-    - name: Ensure git is installed.
-      package: name=git
-
     - name: Ensure docker is installed.
       package: name=docker
 
-    - name: Delete old .env file
+    - name: Delete old content
       ansible.builtin.file:
         state: absent
-        path: /opt/leadanne2/.env
+        path: /opt/leadanne2/*
 
-    - name: Get stuff from git
-      git:
-        repo: https://github.com/Z33DD/leadanne2.git
-        version: main
-        clone: true
-        update: true
+    - name: Copy code to remote location
+      ansible.builtin.copy:
+        src: "./"
         dest: /opt/leadanne2/
 
-    - name: Copy .env file
-      ansible.builtin.copy:
-        src: ../.env
-        dest: /opt/leadanne2/.env
-
-    - name: Copy docker-compose file
-      ansible.builtin.copy:
-        src: ../docker-compose.yml
-        dest: /opt/leadanne2/docker-compose.yml
+    - name: Set environment variable
+      ansible.builtin.shell:
+        cmd: "export ENV=production"
 
     - name: Create and start services
       community.docker.docker_compose_v2:

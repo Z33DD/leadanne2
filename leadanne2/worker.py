@@ -3,29 +3,23 @@ import sentry_sdk
 from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.fastapi import FastApiIntegration
 
-from leadanne2.config import (
-    CELERY_BROKER_URL,
-    PROJECT,
-    SENTRY_DSN,
-    ENV,
-    CELERY_RESULT_BACKEND,
-)
+from leadanne2.config import project, settings
 
 
 def worker_factory() -> Celery:
     worker = Celery(
-        PROJECT["name"],
-        broker=CELERY_BROKER_URL,
-        backend=CELERY_RESULT_BACKEND,
+        project["name"],
+        broker=settings["broker_url"],
     )
-    sentry_sdk.init(
-        SENTRY_DSN,
-        integrations=[
-            CeleryIntegration(),
-            FastApiIntegration(),
-        ],
-        environment=ENV,
-    )
+    if settings["sentry_dsn"]:
+        sentry_sdk.init(
+            settings["sentry_dsn"],
+            integrations=[
+                CeleryIntegration(),
+                FastApiIntegration(),
+            ],
+            environment=settings.env,
+        )
 
     return worker
 

@@ -1,5 +1,4 @@
 from operator import itemgetter
-import os
 from typing import Optional
 from uuid import uuid4
 from fastapi.logger import logger
@@ -8,7 +7,7 @@ from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import PydanticOutputParser
 from leadanne2.schema import EmailTemplate
-from leadanne2.config import OPENAI_API_KEY, DEBUG
+from leadanne2.config import settings
 from leadanne2 import supabase
 
 from langchain_core.language_models.chat_models import BaseChatModel
@@ -18,12 +17,16 @@ from leadanne2.vector_store import vstore
 
 
 def get_model(debug: Optional[bool] = False) -> BaseChatModel:
-    if (DEBUG or debug) and not os.getenv("FORCE_OPENAI"):
-        logger.info("Using Ollama")
-        llm = Ollama(model="llama3")
+    model = settings["llm_model"]
+    if settings["openai_api_key"]:
+        llm = ChatOpenAI(
+            api_key=settings["openai_api_key"],
+            model=model,
+        )
+        logger.info(f"Using {model} from OpenAI")
     else:
-        logger.info("Using OpenAI")
-        llm = ChatOpenAI(api_key=OPENAI_API_KEY)
+        logger.info(f"Using {model} from Ollama")
+        llm = Ollama(model=model)
     return llm
 
 

@@ -1,13 +1,15 @@
 from leadanne2.worker import celery
 from leadanne2.llm import ask_llm
+from leadanne2 import logger
 from leadanne2.email_service import send_email
-from leadanne2.config import REFERENCE
+from leadanne2.config import settings
 
 
 @celery.task
 def generate_result(payload: dict) -> dict:
+    logger.info("Starting LLM task")
     form_id = payload["data"]["formId"]
-    reference = REFERENCE[form_id]
+    reference = settings["reference"][form_id]
 
     data = {}
 
@@ -26,7 +28,7 @@ def generate_result(payload: dict) -> dict:
 
     send_email(
         email,
-        reference["template_id"],
+        reference["language"],
         reply,
         run_id,
     )

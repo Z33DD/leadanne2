@@ -1,16 +1,21 @@
 from langchain_core.vectorstores import VectorStore
 from langchain_community.vectorstores.supabase import SupabaseVectorStore
 from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import AsyncChromiumLoader
 from langchain_community.document_transformers import BeautifulSoupTransformer
 
 from leadanne2 import supabase
+from leadanne2.config import settings
 
 
 def vector_store_factory() -> VectorStore:
-    embeddings = OpenAIEmbeddings()
+    if settings.openai_api_key:
+        embeddings = OpenAIEmbeddings(api_key=settings.openai_api_key)
+    else:
+        embeddings = OllamaEmbeddings(model=settings.llm_model)
     store = SupabaseVectorStore(
         client=supabase,
         embedding=embeddings,

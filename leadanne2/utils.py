@@ -1,3 +1,6 @@
+from leadanne2 import logger
+
+
 def retry_on_exception(exception: type[Exception], tries=3):
     """
     Decorator that retries a function a specified number of times if a
@@ -19,9 +22,9 @@ def retry_on_exception(exception: type[Exception], tries=3):
             for i in range(tries):
                 try:
                     return func(*args, **kwargs)
-                except exception as e:
-                    print(f"Caught exception: {e}")
-                    print(f"Retrying... ({i+1}/{tries})")
+                except exception as ex:
+                    logger.error(f"Failed on try {i+1}/{tries}")
+                    logger.exception(ex)
             raise exception(f"Failed after {tries} tries")
 
         return wrapper
