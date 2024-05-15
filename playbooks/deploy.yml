@@ -2,7 +2,6 @@
 
 - name: Deploy application
   hosts: servers
-  become: true
   tasks:
     - name: Ping my hosts
       ansible.builtin.ping:
@@ -10,21 +9,19 @@
     - name: Ensure docker is installed.
       package: name=docker
 
-    - name: Delete old content
-      ansible.builtin.file:
-        state: absent
-        path: /opt/leadanne2/*
-
     - name: Copy code to remote location
-      ansible.builtin.copy:
-        src: "./"
+      ansible.posix.synchronize:
+        src: "{{playbook_dir}}/../"
         dest: /opt/leadanne2/
+        partial: true
+        private_key: ~/.ssh/id_rsa
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.venv"
+          - "--exclude=*.pyc"
 
-    - name: Set environment variable
-      ansible.builtin.shell:
-        cmd: "export ENV=production"
-
-    - name: Create and start services
+    - name: Build and start services
       community.docker.docker_compose_v2:
         project_src: /opt/leadanne2/
+        build: always
       register: output

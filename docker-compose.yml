@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.server
+    env_file: .env
     environment:
       - ENV_FOR_DYNACONF=${ENV}
     ports:
@@ -13,11 +14,14 @@ services:
 
   worker:
     image: leadanne2-worker
+    env_file: .env
     environment:
       - ENV_FOR_DYNACONF=${ENV}
     build:
       context: .
       dockerfile: ./Dockerfile.worker
+    deploy:
+      replicas: 3
     depends_on:
       - broker
 

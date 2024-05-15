@@ -8,7 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
-    settings_files=["../settings.yaml", "../.secrets.yaml"],
+    settings_files=[
+        "../settings.yaml",
+        "../.secrets.yaml",
+        "/app/settings.yaml",
+        "/app/.secrets.yaml",
+    ],
     environments=True,
 )
 

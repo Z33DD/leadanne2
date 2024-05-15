@@ -6,7 +6,7 @@ from leadanne2.config import settings
 
 logger = logging.getLogger(__name__)
 
-logging.basicConfig(level=settings["log_level"])
+logging.basicConfig(level=settings["log_level"].upper())
 
 
 def supabase_factory() -> Client:
