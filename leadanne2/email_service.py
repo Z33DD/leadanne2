@@ -24,7 +24,7 @@ def send_email(
     logger.info(f"Sending email to {to}")
     resend.api_key = settings["resend_api_key"]
     params: resend.Emails.SendParams = {
-        "sender": "Codetta Tech <leadanne2@mail.z33dd.com>",
+        "sender": settings["sender_email"],
         "to": [to],
         "subject": subject,
         "html": html_body,

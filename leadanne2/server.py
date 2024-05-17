@@ -60,8 +60,18 @@ templates = Jinja2Templates(directory="templates")
 def rate_a_llm_reply(
     request: Request,
     run_id: str,
-    rating: int,
+    rating: int | None = None,
 ) -> _TemplateResponse:
+    if not rating:
+        return templates.TemplateResponse(
+            request=request,
+            name="rating.html",
+            context={
+                "rate": 0,
+                "run_id": run_id,
+            },
+        )
+
     table = supabase.table("Ratings")
     payload = {"rate": rating, "run_id": run_id}
 
@@ -76,8 +86,5 @@ def rate_a_llm_reply(
     return templates.TemplateResponse(
         request=request,
         name="rating.html",
-        context={
-            "rate": rating,
-            "run_id": run_id,
-        },
+        context=payload,
     )
