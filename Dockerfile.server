@@ -22,7 +22,5 @@ USER appuser
 RUN python -m pip install poetry
 RUN python -m poetry install --only main
 
-RUN source .env
-
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "-m", "poetry", "run", "uvicorn", "--host", "0.0.0.0", "--port", "8000", "leadanne2.server:app"]
