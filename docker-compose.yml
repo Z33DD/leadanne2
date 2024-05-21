@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile.server
     env_file: .env
-    environment:
-      - ENV_FOR_DYNACONF=${ENV}
+    # environment:
+    #   - ENV_FOR_DYNACONF=${ENV}
     ports:
       - 8000:8000
     depends_on:
@@ -15,8 +15,6 @@ services:
   worker:
     image: leadanne2-worker
     env_file: .env
-    environment:
-      - ENV_FOR_DYNACONF=${ENV}
     build:
       context: .
       dockerfile: ./Dockerfile.worker
@@ -28,9 +26,6 @@ services:
   broker:
     image: rabbitmq:3-alpine
     env_file: .env
-    environment:
-      - RABBITMQ_DEFAULT_USER=${BROKER_USER}
-      - RABBITMQ_DEFAULT_PASS=${BROKER_PSWD}
     ports:
         - 5672:5672
         - 15672:15672
