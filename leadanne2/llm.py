@@ -59,7 +59,7 @@ def ask_llm(
         },
     )
 
-    retriever = vstore.as_retriever()
+    retriever = vstore.as_retriever(search_kwargs={"k": 3})
     chain = (
         {
             "context": itemgetter("problem") | retriever,
@@ -71,7 +71,7 @@ def ask_llm(
         | llm
         | parser
     )
-    # Collect run ID using openai_wrapper
+
     run_id = uuid4()
     reply = chain.invoke(
         {
